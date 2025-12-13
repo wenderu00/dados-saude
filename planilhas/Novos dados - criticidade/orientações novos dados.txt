@@ -1,0 +1,10 @@
+Nessa planilha o pessoal do HC adicionou as colunas de peso (colocaram uma criticidade de 1 a 3) e uma de end of life (são poucos equipamentos).
+
+Adicionalmente, os que estavam com os valores amarelos eles adicionaram um valor de referência.
+
+Segue sugestão de critérios para ponderação (determinação do índice para prioridade de compra):
+1 - criticidade
+2 - custo externo acumulado > 40% do valor de aquisição
+3 - aquisição > 10 anos
+4 - se o equipamento está em end of life
+5 - indisponibilidade > 15% dos dias
