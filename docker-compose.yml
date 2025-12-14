@@ -1,0 +1,13 @@
+version: "3.8"
+
+services:
+  api-equipamentos:
+    build: .
+    container_name: gestao-ativos-hc
+    ports:
+      - "8000:8000"
+    volumes:
+      # Isso cria um espelho do banco de dados do container para sua pasta local
+      # Assim, os dados persistem mesmo se você desligar o Docker
+      - ./database.db:/app/database.db
+    restart: always
