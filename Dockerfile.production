@@ -1,0 +1,26 @@
+# Dockerfile para imagem de produção com dados já carregados
+FROM python:3.10-slim
+
+WORKDIR /app
+
+# Copiar requirements e instalar dependências
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copiar código da aplicação
+COPY main.py .
+COPY script_carregamento_dados.py .
+
+# Copiar planilhas (necessárias para script)
+COPY planilhas ./planilhas
+
+# Criar diretório de dados e copiar banco de dados populado
+RUN mkdir -p /app/data && chmod -R 777 /app/data
+COPY data/database.db /app/data/database.db
+
+# Expor porta
+EXPOSE 8000
+
+# Comando para iniciar a aplicação
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
+

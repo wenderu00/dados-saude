@@ -12,9 +12,12 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY main.py .
 COPY script_carregamento_dados.py .
 
-# Copia a pasta de planilhas para dentro do container
+# Copia a pasta de planilhas para dentro do container (incluindo subdiretórios)
 # IMPORTANTE: A pasta 'planilhas' deve existir junto com o Dockerfile
-COPY planilhas/ ./planilhas/
+COPY planilhas ./planilhas
+
+# Cria o diretório para o banco de dados com permissões corretas
+RUN mkdir -p /app/data && chmod 777 /app/data
 
 # Expõe a porta 8000 (padrão do FastAPI)
 EXPOSE 8000
